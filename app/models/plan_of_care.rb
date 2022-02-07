@@ -1,0 +1,2 @@
+class PlanOfCare < ApplicationRecord
+end
