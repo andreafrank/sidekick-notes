@@ -12,11 +12,11 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-light bg-warning text-white p-4">
+    <nav class="navbar navbar-light bg-info text-white p-4">
       <div class="h1">Sidekick Notes</div>
-      <div><%= link_to "New Notes", notes_new_path %></div>
-      <div><%= link_to "See My Saved Notes", notes_index_path %></div>
+      <div><%= link_to "Add Notes", root_path %></div>
+      <div><%= link_to "See My Notes", notes_index_path %></div>
     </nav>
-    <%= yield %>
+    <div class="p-4"><%= yield %></div>
   </body>
 </html>
