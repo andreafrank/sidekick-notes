@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2022_02_08_205137) do
     t.string "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "session_id", null: false
+    t.bigint "session_id"
     t.bigint "st_goal_id"
     t.bigint "lt_goal_id"
     t.index ["lt_goal_id"], name: "index_plans_on_lt_goal_id"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2022_02_08_205137) do
   create_table "sessions", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "plan_id", null: false
+    t.bigint "plan_id"
     t.string "text"
     t.index ["plan_id"], name: "index_sessions_on_plan_id"
   end

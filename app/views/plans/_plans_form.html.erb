@@ -1,0 +1,18 @@
+ <%= form_with model: @plan, url: plans_create_path do |form| %>
+
+  <div class="field">
+    <%= form.label "this is the text field; put something here" %>
+    <%= form.text_field :text %>
+  </div>
+
+  <%= form.fields_for :sessions do |session_builder| %>
+    <%= session_builder.label :session_text %>
+    <%= session_builder.text_field :text %>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+  <br>
+  <br>
+<% end %>

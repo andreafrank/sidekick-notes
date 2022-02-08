@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'notes/destroy'
   post 'notes/create'
 
-  get 'sessions/index'
-  get 'sessions/new'
-  post 'sessions/create'
+  get 'plans/index'
+  get 'plans/new'
+  post 'plans/create'
 end

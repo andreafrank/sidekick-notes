@@ -1,5 +1,5 @@
 class AddSessionToPlans < ActiveRecord::Migration[6.1]
   def change
-    add_reference :plans, :session, null: false, foreign_key: true
+    add_reference :plans, :session, foreign_key: true
   end
 end
