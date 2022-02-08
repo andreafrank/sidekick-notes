@@ -1,0 +1,13 @@
+ <%= form_with model: @note, url: notes_create_path do |form| %>
+
+  <div class="field">
+    <%= form.label "Please enter as many notes as you like in the field below." %>
+    <%= form.text_area :text %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+  <br>
+  <br>
+<% end %>
