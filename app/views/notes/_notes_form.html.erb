@@ -1,13 +1,16 @@
- <%= form_with model: @note, url: notes_create_path do |form| %>
+<div> 
+  <%= form_with model: @note, url: notes_create_path do |form| %>
 
-  <div class="field">
-    <%= form.label :note_text %>
-    <%= form.text_area :text %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-  <br>
-  <br>
-<% end %>
+    <div class="field">
+      <div><%= form.label "Add your notes here and we will parse them for you." %></div>
+      <br>
+      <div><%= form.text_area :text %></div>
+    </div>
+    <br>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+    <br>
+    <br>
+  <% end %>
+</div>

@@ -1,50 +1,71 @@
-<div>Please complete as many fields below as appropriate.</div>
-<br>
- <%= form_with model: @plan, url: plans_create_path do |form| %>
+<div class="center">*Please complete as many fields below as appropriate.</div>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <br>
+       <%= form_with model: @plan, url: plans_create_path do |form| %>
 
-  <div class="field">
-    <%= form.label "Notes regarding plan of care" %>
-    <%= form.text_field :text %>
-  </div>
-  <br>
-  <div class="field">
-  <%= form.fields_for :sessions do |session_builder| %>
-    <%= session_builder.label "Notes regarding this session" %>
-    <%= session_builder.text_field :text %>
-  </div>
-  <!-- NOTE: This was intended to be a many-to-many field for both plans of care and sessions.  -->
-  <!-- It no longer makes much sense here, as there are already text fields for this. -->
-
-  <!-- <br> -->
-  <!-- <div class="field"> -->
-    <!-- <%= session_builder.fields_for :memos do |memo_builder| %> -->
-  <!--   <%= memo_builder.label :memo_text %> -->
-      <!-- <%= memo_builder.text_field :text %> -->
-     <% end %>
-  <!-- </div> -->
+       <div class="h4">Plan of Care</div>
+        <div class="field">
+          <div><%= form.label "Please enter any notes regarding plan of care" %></div>
+          <div class="mt-2"><%= form.text_area :text %></div>
+        </div>
+    </div>
     <br>
-    <div class="field">
-      <%= session_builder.fields_for :practices do |practice_builder| %>
-        <%= practice_builder.label "Word practiced" %>
-        <%= practice_builder.text_field :word %>
-        <%= practice_builder.label "Was it correctly pronounced?" %>
-        <%= practice_builder.select(:correctness, [['+', true], ['-', false]]) %>
-        <%= practice_builder.label "Please indicate the prompt level" %>
-        <%= practice_builder.text_field :prompt_level %>
+    <br>
+      <div class="col-3">
+        <br>
+        <div class="h4">Session</div>
+        <div class="field">
+        <%= form.fields_for :sessions do |session_builder| %>
+          <div><%= session_builder.label "Please enter any notes regarding this session" %></div>
+          <div class="mt-2"><%= session_builder.text_area :text %></div>
+        </div>
+        <br>
+        <div class="h4">Memo</div>
+        <div class="field">
+            <%= session_builder.fields_for :memos do |memo_builder| %>
+            <%= memo_builder.label "Anything else to add?" %>
+              <%= memo_builder.text_field :text %>
+             <% end %>
+          </div>
+      </div>
+    <br>
+    <br>
+    <div class="col-3">
+      <br>
+      <div class="h4">Words Practiced</div>
+      <div class="field">
+        <%= session_builder.fields_for :practices do |practice_builder| %>
+          <div><%= practice_builder.label "Word practiced" %></div>
+          <div class="mt-2"><%= practice_builder.text_field :word %></div>
+          <br>
+          <div><%= practice_builder.label "Was it correctly pronounced?" %></div>
+          <div class="mt-2"><%= practice_builder.select(:correctness, [['+', true], ['-', false]]) %></div>
+          <br>
+          <div><%= practice_builder.label "Please indicate the prompt level" %></div>
+          <div class="mt-2"><%= practice_builder.text_field :prompt_level %></div>
+      </div>
     </div>
       <br>
-      <div class="field">
-        <%= practice_builder.fields_for :sounds do |sound_builder| %>
-          <%= sound_builder.label "What sound was practiced?" %>
-          <%= sound_builder.text_field :text %>
-          <%= sound_builder.label :word_position %>
-          <%= sound_builder
-            .select(:word_position, [
-              ['beginning', 'beginning'],
-              ['middle', 'middle'],
-              ['end', 'end'],
-            ]) 
-          %>
+      <br>
+      <div class="col-3">
+        <br>
+        <div class="h4">Sounds Practiced</div>
+        <div class="field">
+          <%= practice_builder.fields_for :sounds do |sound_builder| %>
+            <div><%= sound_builder.label "What sound was practiced?" %></div>
+            <div class="mt-2"><%= sound_builder.text_field :text %></div>
+            <br>
+            <div><%= sound_builder.label "Word position" %></div>
+            <div class="mt-2"><%= sound_builder
+              .select(:word_position, [
+                ['beginning', 'beginning'],
+                ['middle', 'middle'],
+                ['end', 'end'],
+              ]) 
+            %></div>
+        </div>
       </div>
       <% end %>
     <% end %>
@@ -56,3 +77,6 @@
   <br>
   <br>
 <% end %>
+</div>
+</div>
+</div>
