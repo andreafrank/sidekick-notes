@@ -1,13 +1,27 @@
  <%= form_with model: @plan, url: plans_create_path do |form| %>
 
   <div class="field">
-    <%= form.label "this is the text field; put something here" %>
+    <%= form.label :plan_text %>
     <%= form.text_field :text %>
   </div>
 
   <%= form.fields_for :sessions do |session_builder| %>
     <%= session_builder.label :session_text %>
     <%= session_builder.text_field :text %>
+
+    <%= session_builder.fields_for :memos do |memo_builder| %>
+      <%= memo_builder.label :memo_text %>
+      <%= memo_builder.text_field :text %>
+    <% end %>
+
+    <%= session_builder.fields_for :practices do |practice_builder| %>
+      <%= practice_builder.label :practice_word %>
+      <%= practice_builder.text_field :word %>
+      <%= practice_builder.label :was_it_correct? %>
+      <%= practice_builder.select(:correctness, [['+', true], ['-', false]]) %>
+      <%= practice_builder.label :please_describe_the_prompt_level %>
+      <%= practice_builder.text_field :prompt_level %>
+    <% end %>
   <% end %>
 
   <div class="actions">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_08_205137) do
+ActiveRecord::Schema.define(version: 2022_02_09_002452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2022_02_08_205137) do
     t.string "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "session_id", null: false
+    t.bigint "session_id"
     t.index ["session_id"], name: "index_memos_on_session_id"
   end
 
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2022_02_08_205137) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "session_id", null: false
-    t.bigint "sound_id", null: false
+    t.bigint "sound_id"
     t.index ["session_id"], name: "index_practices_on_session_id"
     t.index ["sound_id"], name: "index_practices_on_sound_id"
   end

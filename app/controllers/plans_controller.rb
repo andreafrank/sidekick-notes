@@ -9,7 +9,9 @@ class PlansController < ApplicationController
 
   def new
     @plan = Plan.new
-    @plan.sessions.build
+    @sessions = @plan.sessions.build
+    @memo = @sessions.memos.build
+    @practice = @sessions.practices.build
   end
 
   def create
@@ -20,6 +22,23 @@ class PlansController < ApplicationController
   private 
 
   def plan_params
-    params.require(:plan).permit(:text, sessions_attributes: [:id, :text])
+    params.require(:plan)
+      .permit(
+        :text,
+        sessions_attributes: [
+          :id,
+          :text,
+          memos_attributes: [
+            :id,
+            :text
+          ],
+          practices_attributes: [
+            :id, 
+            :word,
+            :correctness,
+            :prompt_level
+          ]
+        ]
+      )
   end
 end
