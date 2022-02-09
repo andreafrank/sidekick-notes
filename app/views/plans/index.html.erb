@@ -3,16 +3,50 @@
     <% counter = 0 %>
     <% @plans.each do |plan| %>
       <% increment_counter = counter += 1 %>
+      <br>
+      <br>
       <div class="h3">Plan of care #<%= increment_counter %></div>
+      <div>Created on <%= plan.created_at.to_time.strftime('%B %e, %Y at %l:%M %p') %></div>
       <div><%= plan.text %></div>
+      <br>
+
       <div class="h5">Sessions</div>
       <% plan.sessions.each do |session| %>
         <div><%= session.text %></div>
       <% end %>
+      <br>
+
       <div class="h5">Memos</div>
       <% plan.memos.each do |memo| %>
         <div><%= memo.text %></div>
       <% end %>
+      <br>
+
+      <div class="h5">Word Practiced</div>
+      <% plan.practices.each do |practice| %>
+        <div><%= practice.word %></div>
+        <div>Was it prompted? <b><%= practice.prompt_level %></b></div>
+          <div>
+            <div>Was it correct?:
+              <% if practice.correctness == true %>
+                <b>
+                  +
+                </b></div>
+              <% else %>
+              <b>
+                -
+              </b></div>
+              <% end %>
+          </div>
+          <br>
+          <div class="h5">Sound Practiced</div>
+            <% practice.sounds.each do |sound| %>
+             <div>Sound: <b><%= sound.text %></b></div>
+             <div>Word Position: <b><%= sound.word_position %></b></div>
+          <% end %>
+      <% end %>
+      <br>
+
     <% end %>
   <% else %> 
     <div>Once you add some notes, you will be able to view them here.</div>
