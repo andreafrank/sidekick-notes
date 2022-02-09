@@ -28,8 +28,8 @@ Thank you for taking the time to review my submission. I welcome your feedback a
 **If users don't want to use the form (or if it is not flexible enough):**
 **Users should be able to enter notes here, and the app will be able to parse for them. This is how I would start:**
 
-* I envisioned using RegEx to parse notes that a user may enter. ![Rubular](https://rubular.com/) is my best friend here.
-* I also thought about using a Gem that will allow for fuzzy matches to encapsulate any short-hand that I would consistently see added to notes. ![Fuzzy Match](https://github.com/seamusabshere/fuzzy_match) seems to be what I'm looking for.
+* I envisioned using RegEx to parse notes that a user may enter. [Rubular](https://rubular.com/) is my best friend here.
+* I also thought about using a Gem that will allow for fuzzy matches to encapsulate any short-hand that I would consistently see added to notes. [Fuzzy Match](https://github.com/seamusabshere/fuzzy_match) seems to be what I'm looking for.
 * Lastly, (and this is perhaps a bit of a... *creative* solution) I thought about potentially including I18n not for localization, but as a way to translate shorthand to longhand while parsing to save to the database.
 
 ## Screenshot
