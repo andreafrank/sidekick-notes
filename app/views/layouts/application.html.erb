@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sidekick Notes</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('favicon.ico') %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-light bg-info text-white p-4">
+      <div class="h1">Sidekick Notes</div>
+      <div><%= link_to "Add Notes", root_path %></div>
+      <div><%= link_to "See My Notes", plans_index_path %></div>
+    </nav>
+    <div class="p-4"><%= yield %></div>
+  </body>
+</html>

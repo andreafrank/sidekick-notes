@@ -1,0 +1,20 @@
+<div class="container"> 
+  <% if @plans.any? %>
+    <% counter = 0 %>
+    <% @plans.each do |plan| %>
+      <% increment_counter = counter += 1 %>
+      <div class="h3">Plan of care #<%= increment_counter %></div>
+      <div><%= plan.text %></div>
+      <div class="h5">Sessions</div>
+      <% plan.sessions.each do |session| %>
+        <div><%= session.text %></div>
+      <% end %>
+      <div class="h5">Memos</div>
+      <% plan.memos.each do |memo| %>
+        <div><%= memo.text %></div>
+      <% end %>
+    <% end %>
+  <% else %> 
+    <div>Once you add some notes, you will be able to view them here.</div>
+  <% end %> 
+</div>  
