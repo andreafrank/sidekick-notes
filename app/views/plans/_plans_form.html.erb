@@ -1,42 +1,55 @@
+<div>Please complete as many fields below as appropriate.</div>
+<br>
  <%= form_with model: @plan, url: plans_create_path do |form| %>
 
   <div class="field">
-    <%= form.label :plan_text %>
+    <%= form.label "Notes regarding plan of care" %>
     <%= form.text_field :text %>
   </div>
-
+  <br>
+  <div class="field">
   <%= form.fields_for :sessions do |session_builder| %>
-    <%= session_builder.label :session_text %>
+    <%= session_builder.label "Notes regarding this session" %>
     <%= session_builder.text_field :text %>
+  </div>
+  <!-- NOTE: This was intended to be a many-to-many field for both plans of care and sessions.  -->
+  <!-- It no longer makes much sense here, as there are already text fields for this. -->
 
-    <%= session_builder.fields_for :memos do |memo_builder| %>
-      <%= memo_builder.label :memo_text %>
-      <%= memo_builder.text_field :text %>
-    <% end %>
-
-    <%= session_builder.fields_for :practices do |practice_builder| %>
-      <%= practice_builder.label :practice_word %>
-      <%= practice_builder.text_field :word %>
-      <%= practice_builder.label :was_it_correct? %>
-      <%= practice_builder.select(:correctness, [['+', true], ['-', false]]) %>
-      <%= practice_builder.label :please_describe_the_prompt_level %>
-      <%= practice_builder.text_field :prompt_level %>
-
-      <%= practice_builder.fields_for :sounds do |sound_builder| %>
-        <%= sound_builder.label :sound_text %>
-        <%= sound_builder.text_field :text %>
-        <%= sound_builder.label :word_position %>
-        <%= sound_builder
-          .select(:word_position, [
-            ['beginning', 'beginning'],
-            ['middle', 'middle'],
-            ['end', 'end'],
-          ]) 
-        %>
+  <!-- <br> -->
+  <!-- <div class="field"> -->
+    <!-- <%= session_builder.fields_for :memos do |memo_builder| %> -->
+  <!--   <%= memo_builder.label :memo_text %> -->
+      <!-- <%= memo_builder.text_field :text %> -->
+     <% end %>
+  <!-- </div> -->
+    <br>
+    <div class="field">
+      <%= session_builder.fields_for :practices do |practice_builder| %>
+        <%= practice_builder.label "Word practiced" %>
+        <%= practice_builder.text_field :word %>
+        <%= practice_builder.label "Was it correctly pronounced?" %>
+        <%= practice_builder.select(:correctness, [['+', true], ['-', false]]) %>
+        <%= practice_builder.label "Please indicate the prompt level" %>
+        <%= practice_builder.text_field :prompt_level %>
+    </div>
+      <br>
+      <div class="field">
+        <%= practice_builder.fields_for :sounds do |sound_builder| %>
+          <%= sound_builder.label "What sound was practiced?" %>
+          <%= sound_builder.text_field :text %>
+          <%= sound_builder.label :word_position %>
+          <%= sound_builder
+            .select(:word_position, [
+              ['beginning', 'beginning'],
+              ['middle', 'middle'],
+              ['end', 'end'],
+            ]) 
+          %>
+      </div>
       <% end %>
     <% end %>
   <% end %>
-
+  <br>
   <div class="actions">
     <%= form.submit %>
   </div>
