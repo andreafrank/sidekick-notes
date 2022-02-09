@@ -5,7 +5,10 @@ class Session < ApplicationRecord
   accepts_nested_attributes_for :memos
 
   has_many :practices
-  accepts_nested_attributes_for :practices 
+  accepts_nested_attributes_for :practices
+
+  has_many :sounds, :through => :practices
+  accepts_nested_attributes_for :sounds
 
   def memos_attributes=(memos_attributes)
     memos_attributes.each do |i, memo_attributes|

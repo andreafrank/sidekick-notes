@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2022_02_09_002452) do
     t.string "word_position"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "session_id", null: false
+    t.bigint "session_id"
     t.bigint "practice_id", null: false
     t.index ["practice_id"], name: "index_sounds_on_practice_id"
     t.index ["session_id"], name: "index_sounds_on_session_id"

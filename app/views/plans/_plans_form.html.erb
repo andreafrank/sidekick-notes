@@ -21,6 +21,19 @@
       <%= practice_builder.select(:correctness, [['+', true], ['-', false]]) %>
       <%= practice_builder.label :please_describe_the_prompt_level %>
       <%= practice_builder.text_field :prompt_level %>
+
+      <%= practice_builder.fields_for :sounds do |sound_builder| %>
+        <%= sound_builder.label :sound_text %>
+        <%= sound_builder.text_field :text %>
+        <%= sound_builder.label :word_position %>
+        <%= sound_builder
+          .select(:word_position, [
+            ['beginning', 'beginning'],
+            ['middle', 'middle'],
+            ['end', 'end'],
+          ]) 
+        %>
+      <% end %>
     <% end %>
   <% end %>
 

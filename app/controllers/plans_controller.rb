@@ -12,6 +12,7 @@ class PlansController < ApplicationController
     @sessions = @plan.sessions.build
     @memo = @sessions.memos.build
     @practice = @sessions.practices.build
+    @sound = @practice.sounds.build
   end
 
   def create
@@ -36,7 +37,12 @@ class PlansController < ApplicationController
             :id, 
             :word,
             :correctness,
-            :prompt_level
+            :prompt_level,
+            sounds_attributes: [
+              :id,
+              :text,
+              :word_position
+            ]
           ]
         ]
       )
