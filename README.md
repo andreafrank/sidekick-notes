@@ -6,13 +6,14 @@ Thank you for taking the time to review my submission. I welcome your feedback a
 
 ## Table of Contents
 * [Notes](#notes)
-* [Next Steps](#nextsteps)
+* [Next_Steps](#nextsteps)
 * [Screenshot](#screenshot)
 
 ## Notes
 * The app is capped at 10 hours of work.
 
-## Next steps & Things I'd Implement with More Time
+## Next_Steps
+**& Things I'd Implement with More Time**
 * RSpec test coverage
 * Error handling
 * Change Sessions model name. It could conflict in the future with User authentication sessions.
@@ -31,6 +32,6 @@ Thank you for taking the time to review my submission. I welcome your feedback a
 * I also thought about using a Gem that will allow for fuzzy matches to encapsulate any short-hand that I would consistently see added to notes. ![Fuzzy Match](https://github.com/seamusabshere/fuzzy_match) seems to be what I'm looking for.
 * Lastly, (and this is perhaps a bit of a... *creative* solution) I thought about potentially including I18n not for localization, but as a way to translate shorthand to longhand while parsing to save to the database.
 
-## Screenshots
+## Screenshot
 ![SidekickNotes](app/assets/images/screenshot.png) 
 
